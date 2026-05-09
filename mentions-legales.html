@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions Légales — BundlyHub</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://www.bundlyhub.com/mentions-legales" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23d4500a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='900' font-size='18' fill='white'>B</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:  #f7f3ec;
+      --cream2: #ede8df;
+      --ink:    #16120c;
+      --ink2:   #3d3628;
+      --muted:  #8a7f6e;
+      --orange: #d4500a;
+      --border: #d8d0c3;
+      --white:  #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--ink);
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 400; line-height: 1.7; overflow-x: hidden;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f7f3ec'/%3E%3Ccircle cx='1' cy='1' r='.6' fill='%23c8bfae' opacity='.25'/%3E%3C/svg%3E");
+      background-size: 4px;
+    }
+    nav, main, footer, .page-hero, .sommaire { position: relative; z-index: 1; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 64px; border-bottom: 1.5px solid var(--border);
+      background: var(--cream); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.4rem; letter-spacing: -.03em; color: var(--ink); text-decoration: none; }
+    .logo em { color: var(--orange); font-style: italic; }
+    .nav-back {
+      background: transparent; border: 1.5px solid var(--border);
+      color: var(--muted); padding: 9px 22px; border-radius: 3px;
+      font-family: 'Instrument Sans', sans-serif; font-size: .85rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .nav-back:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* HERO */
+    .page-hero {
+      padding: 80px 64px 60px;
+      border-bottom: 1.5px solid var(--border);
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .page-tag {
+      display: inline-block; background: var(--orange); color: #fff;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 2px; width: fit-content;
+    }
+    .page-hero h1 {
+      font-family: 'Fraunces', serif; font-weight: 900;
+      font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -.04em; line-height: 1.05;
+    }
+    .page-hero h1 em { font-style: italic; font-weight: 300; color: var(--orange); }
+    .page-date { color: var(--muted); font-size: .88rem; margin-top: 4px; }
+
+    /* CONTENT */
+    main {
+      max-width: 820px; margin: 0 auto;
+      padding: 80px 64px 100px;
+    }
+
+    .legal-section { margin-bottom: 56px; }
+
+    .legal-section h2 {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.3rem; letter-spacing: -.02em;
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legal-section h3 {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1rem; letter-spacing: -.01em;
+      margin: 20px 0 10px; color: var(--ink2);
+    }
+
+    .legal-section p {
+      color: var(--ink2); font-size: .95rem; line-height: 1.78;
+      margin-bottom: 12px;
+    }
+
+    .legal-section p:last-child { margin-bottom: 0; }
+
+    .legal-section a { color: var(--orange); text-decoration: none; }
+    .legal-section a:hover { text-decoration: underline; }
+
+    .info-block {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 4px; padding: 24px 28px;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 16px;
+    }
+    .info-row { display: flex; gap: 16px; font-size: .93rem; }
+    .info-label { color: var(--muted); min-width: 160px; flex-shrink: 0; }
+    .info-val { color: var(--ink); font-weight: 500; }
+    .placeholder { color: var(--orange); font-style: italic; font-weight: 400; }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 64px; border-top: 1.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--cream);
+    }
+    .footer-logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -.03em; }
+    .footer-logo em { color: var(--orange); font-style: italic; }
+    footer p { color: var(--muted); font-size: .83rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); font-size: .83rem; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .page-hero { padding: 50px 24px 40px; }
+      main { padding: 50px 24px 70px; }
+      .info-row { flex-direction: column; gap: 2px; }
+      .info-label { min-width: unset; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Bundly<em>Hub</em></a>
+  <a href="index.html" class="nav-back">← Retour à l'accueil</a>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Légal</span>
+  <h1>Mentions <em>légales</em></h1>
+  <p class="page-date">Dernière mise à jour : mai 2026</p>
+</div>
+
+<main>
+
+  <!-- 1. ÉDITEUR -->
+  <div class="legal-section">
+    <h2>1. Éditeur du site</h2>
+    <p>Le site <strong>bundlyhub.com</strong> est édité par :</p>
+    <div class="info-block">
+      <div class="info-row"><span class="info-label">Nom</span><span class="info-val">Nicolas Capozzi</span></div>
+      <div class="info-row"><span class="info-label">Statut juridique</span><span class="info-val">Entrepreneur individuel (Micro-entreprise)</span></div>
+      <div class="info-row"><span class="info-label">Nom commercial</span><span class="info-val">BundlyHub</span></div>
+      <div class="info-row"><span class="info-label">SIRET</span><span class="info-val">531 158 053 00029</span></div>
+      <div class="info-row"><span class="info-label">Adresse</span><span class="info-val">296 Chemin de la Bayette, 38660 Le Touvet</span></div>
+      <div class="info-row"><span class="info-label">E-mail</span><span class="info-val"><a href="mailto:contact@bundlyhub.com">contact@bundlyhub.com</a></span></div>
+      <div class="info-row"><span class="info-label">TVA</span><span class="info-val">TVA non applicable — art. 293 B du CGI (franchise en base)</span></div>
+    </div>
+  </div>
+
+  <!-- 2. DIRECTEUR DE PUBLICATION -->
+  <div class="legal-section">
+    <h2>2. Directeur de la publication</h2>
+    <p>Le directeur de la publication est <strong>Nicolas Capozzi</strong>, en qualité d'entrepreneur individuel.</p>
+  </div>
+
+  <!-- 3. HÉBERGEMENT -->
+  <div class="legal-section">
+    <h2>3. Hébergement</h2>
+    <p>Le site est hébergé par :</p>
+    <div class="info-block">
+      <div class="info-row"><span class="info-label">Société</span><span class="info-val">GitHub, Inc. (filiale de Microsoft Corporation)</span></div>
+      <div class="info-row"><span class="info-label">Adresse</span><span class="info-val">88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</span></div>
+      <div class="info-row"><span class="info-label">Site</span><span class="info-val"><a href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a></span></div>
+    </div>
+  </div>
+
+  <!-- 4. PROPRIÉTÉ INTELLECTUELLE -->
+  <div class="legal-section">
+    <h2>4. Propriété intellectuelle</h2>
+    <p>L'ensemble des contenus présents sur le site bundlyhub.com (textes, visuels, structure, code) est la propriété exclusive de BundlyHub, sauf mention contraire.</p>
+    <p>Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable est strictement interdite et constituerait une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+  </div>
+
+  <!-- 5. DONNÉES PERSONNELLES -->
+  <div class="legal-section">
+    <h2>5. Données personnelles et RGPD</h2>
+    <p>BundlyHub collecte des données personnelles uniquement via le formulaire de contact du site (prénom, nom, adresse e-mail). Ces données sont utilisées exclusivement pour répondre aux demandes des utilisateurs et ne font l'objet d'aucune cession à des tiers, ni d'aucun traitement commercial.</p>
+
+    <h3>Responsable du traitement</h3>
+    <p><strong>Nicolas Capozzi</strong> — <a href="mailto:contact@bundlyhub.com">contact@bundlyhub.com</a></p>
+
+    <h3>Durée de conservation</h3>
+    <p>Les données collectées sont conservées pour une durée maximale de 3 ans à compter du dernier contact.</p>
+
+    <h3>Vos droits</h3>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données. Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@bundlyhub.com">contact@bundlyhub.com</a>.</p>
+    <p>Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> si vous estimez que vos droits ne sont pas respectés.</p>
+  </div>
+
+  <!-- 6. COOKIES -->
+  <div class="legal-section">
+    <h2>6. Cookies</h2>
+    <p>Le site bundlyhub.com n'utilise pas de cookies de tracking ou publicitaires. Aucune donnée de navigation n'est collectée à des fins d'analyse ou de ciblage commercial.</p>
+  </div>
+
+  <!-- 7. RESPONSABILITÉ -->
+  <div class="legal-section">
+    <h2>7. Limitation de responsabilité</h2>
+    <p>BundlyHub s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, BundlyHub ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition et décline toute responsabilité pour d'éventuelles imprécisions, inexactitudes ou omissions.</p>
+    <p>BundlyHub ne saurait être tenu responsable des dommages directs ou indirects résultant de l'accès au site ou de l'utilisation de son contenu.</p>
+  </div>
+
+  <!-- 8. DROIT APPLICABLE -->
+  <div class="legal-section">
+    <h2>8. Droit applicable</h2>
+    <p>Le présent site et ses mentions légales sont soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">Bundly<em>Hub</em></div>
+  <p>© 2026 BundlyHub — Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="cgv.html">CGV</a>
+    <a href="mailto:contact@bundlyhub.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

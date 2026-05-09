@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions Générales de Vente — BundlyHub</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://www.bundlyhub.com/cgv" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23d4500a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='900' font-size='18' fill='white'>B</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:  #f7f3ec;
+      --cream2: #ede8df;
+      --ink:    #16120c;
+      --ink2:   #3d3628;
+      --muted:  #8a7f6e;
+      --orange: #d4500a;
+      --border: #d8d0c3;
+      --white:  #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--ink);
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 400; line-height: 1.7; overflow-x: hidden;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f7f3ec'/%3E%3Ccircle cx='1' cy='1' r='.6' fill='%23c8bfae' opacity='.25'/%3E%3C/svg%3E");
+      background-size: 4px;
+    }
+    nav, main, footer, .page-hero, .sommaire { position: relative; z-index: 1; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 64px; border-bottom: 1.5px solid var(--border);
+      background: var(--cream); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.4rem; letter-spacing: -.03em; color: var(--ink); text-decoration: none; }
+    .logo em { color: var(--orange); font-style: italic; }
+    .nav-back {
+      background: transparent; border: 1.5px solid var(--border);
+      color: var(--muted); padding: 9px 22px; border-radius: 3px;
+      font-family: 'Instrument Sans', sans-serif; font-size: .85rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .nav-back:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* HERO */
+    .page-hero {
+      padding: 80px 64px 60px;
+      border-bottom: 1.5px solid var(--border);
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .page-tag {
+      display: inline-block; background: var(--orange); color: #fff;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 2px; width: fit-content;
+    }
+    .page-hero h1 {
+      font-family: 'Fraunces', serif; font-weight: 900;
+      font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -.04em; line-height: 1.05;
+    }
+    .page-hero h1 em { font-style: italic; font-weight: 300; color: var(--orange); }
+    .page-date { color: var(--muted); font-size: .88rem; margin-top: 4px; }
+
+    /* SOMMAIRE */
+    .sommaire {
+      max-width: 820px; margin: 0 auto;
+      padding: 40px 64px 0;
+    }
+    .sommaire-inner {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 4px; padding: 28px 32px;
+    }
+    .sommaire-inner p {
+      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .sommaire-inner ol {
+      list-style: none; display: flex; flex-direction: column; gap: 6px;
+    }
+    .sommaire-inner li { font-size: .92rem; }
+    .sommaire-inner a { color: var(--ink2); text-decoration: none; transition: color .2s; }
+    .sommaire-inner a:hover { color: var(--orange); }
+
+    /* CONTENT */
+    main {
+      max-width: 820px; margin: 0 auto;
+      padding: 60px 64px 100px;
+    }
+
+    .legal-section { margin-bottom: 56px; }
+
+    .legal-section h2 {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.3rem; letter-spacing: -.02em;
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legal-section h3 {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1rem; letter-spacing: -.01em;
+      margin: 22px 0 10px; color: var(--ink2);
+    }
+
+    .legal-section p {
+      color: var(--ink2); font-size: .95rem; line-height: 1.78;
+      margin-bottom: 12px;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section a { color: var(--orange); text-decoration: none; }
+    .legal-section a:hover { text-decoration: underline; }
+
+    .legal-section ul {
+      list-style: none; margin: 12px 0 16px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .legal-section ul li {
+      display: flex; gap: 10px; align-items: flex-start;
+      color: var(--ink2); font-size: .95rem; line-height: 1.65;
+    }
+    .legal-section ul li::before {
+      content: '→'; color: var(--orange); flex-shrink: 0; margin-top: 1px;
+    }
+
+    .offer-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border: 1.5px solid var(--border); border-radius: 4px; overflow: hidden;
+    }
+    .offer-table th {
+      background: var(--ink); color: rgba(247,243,236,.7);
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 14px 20px; text-align: left;
+    }
+    .offer-table td {
+      padding: 14px 20px; font-size: .92rem; color: var(--ink2);
+      border-bottom: 1px solid var(--border);
+    }
+    .offer-table tr:last-child td { border-bottom: none; }
+    .offer-table tr:nth-child(even) td { background: var(--cream2); }
+    .price-cell { font-family: 'Fraunces', serif; font-weight: 700; color: var(--orange); }
+
+    .info-block {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 4px; padding: 20px 24px;
+      margin-top: 12px; font-size: .93rem; color: var(--ink2); line-height: 1.7;
+    }
+    .placeholder { color: var(--orange); font-style: italic; }
+
+    .highlight-box {
+      background: rgba(212,80,10,.06); border-left: 3px solid var(--orange);
+      padding: 16px 20px; border-radius: 0 4px 4px 0;
+      margin: 16px 0; font-size: .93rem; color: var(--ink2); line-height: 1.7;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 64px; border-top: 1.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--cream);
+    }
+    .footer-logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -.03em; }
+    .footer-logo em { color: var(--orange); font-style: italic; }
+    footer p { color: var(--muted); font-size: .83rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); font-size: .83rem; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .page-hero { padding: 50px 24px 40px; }
+      .sommaire { padding: 30px 24px 0; }
+      main { padding: 50px 24px 70px; }
+      .offer-table { display: block; overflow-x: auto; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Bundly<em>Hub</em></a>
+  <a href="index.html" class="nav-back">← Retour à l'accueil</a>
+</nav>
+
+<div class="page-hero">
+  <span class="page-tag">Légal</span>
+  <h1>Conditions Générales <em>de Vente</em></h1>
+  <p class="page-date">Dernière mise à jour : mai 2026 — Version 1.0</p>
+</div>
+
+<!-- SOMMAIRE -->
+<div class="sommaire">
+  <div class="sommaire-inner">
+    <p>Sommaire</p>
+    <ol>
+      <li><a href="#objet">1. Objet et champ d'application</a></li>
+      <li><a href="#services">2. Description des services</a></li>
+      <li><a href="#prix">3. Prix et facturation</a></li>
+      <li><a href="#paiement">4. Modalités de paiement</a></li>
+      <li><a href="#duree">5. Durée et résiliation</a></li>
+      <li><a href="#retractation">6. Droit de rétractation</a></li>
+      <li><a href="#obligations">7. Obligations des parties</a></li>
+      <li><a href="#responsabilite">8. Responsabilité, force majeure et confidentialité des accès</a></li>
+      <li><a href="#ip">9. Propriété intellectuelle</a></li>
+      <li><a href="#donnees">10. Données personnelles</a></li>
+      <li><a href="#litiges">11. Litiges et droit applicable</a></li>
+    </ol>
+  </div>
+</div>
+
+<main>
+
+  <!-- 1 -->
+  <div class="legal-section" id="objet">
+    <h2>1. Objet et champ d'application</h2>
+    <p>Les présentes Conditions Générales de Vente (ci-après « CGV ») régissent les relations contractuelles entre :</p>
+    <div class="info-block">
+      <strong>BundlyHub</strong> — <strong>Nicolas Capozzi</strong>, entrepreneur individuel, SIRET 531 158 053 00029, dont le siège est situé 296 Chemin de la Bayette, 38660 Le Touvet, e-mail : <a href="mailto:contact@bundlyhub.com">contact@bundlyhub.com</a> (ci-après « le Prestataire »)
+    </div>
+    <p style="margin-top:14px;">Et toute personne physique ou morale souscrivant à l'un des services proposés sur le site bundlyhub.com (ci-après « le Client »).</p>
+    <p>Toute souscription à un service implique l'acceptation pleine et entière des présentes CGV. Le Client déclare en avoir pris connaissance avant de passer commande.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="legal-section" id="services">
+    <h2>2. Description des services</h2>
+    <p>BundlyHub propose des services d'automatisation de tâches répétitives pour les professionnels, accessibles sur abonnement mensuel sans engagement de durée. Les offres disponibles sont les suivantes :</p>
+
+    <table class="offer-table">
+      <thead>
+        <tr>
+          <th>Offre</th>
+          <th>Description</th>
+          <th>Tarif mensuel HT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pilote Avis Google</strong></td>
+          <td>Réponse automatique et personnalisée à chaque avis Google reçu</td>
+          <td class="price-cell">49 €</td>
+        </tr>
+        <tr>
+          <td><strong>Relance Devis</strong></td>
+          <td>Séquence de relances automatiques pour chaque devis non signé</td>
+          <td class="price-cell">79 €</td>
+        </tr>
+        <tr>
+          <td><strong>Sync Leads Meta</strong></td>
+          <td>Transfert en temps réel des leads Meta Ads vers le CRM ou Google Sheet du Client</td>
+          <td class="price-cell">99 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Le Prestataire se réserve le droit de faire évoluer les services et leurs caractéristiques. Le Client en sera informé par e-mail avec un préavis d'un mois.</p>
+  </div>
+
+  <!-- 3 -->
+  <div class="legal-section" id="prix">
+    <h2>3. Prix et facturation</h2>
+    <p>Les prix sont indiqués en euros. En tant qu'entrepreneur individuel en franchise en base de TVA (article 293 B du Code Général des Impôts), BundlyHub ne facture pas de TVA. La mention <em>« TVA non applicable — art. 293 B du CGI »</em> figure sur chaque facture.</p>
+    <p>Aucun frais d'installation ni de mise en service n'est facturé. Seul l'abonnement mensuel est dû.</p>
+    <p>Une facture est émise chaque mois par e-mail à la date anniversaire de souscription.</p>
+  </div>
+
+  <!-- 4 -->
+  <div class="legal-section" id="paiement">
+    <h2>4. Modalités de paiement</h2>
+    <p>Le règlement s'effectue par virement bancaire ou tout autre moyen convenu entre les parties lors de l'onboarding. Le paiement est dû à réception de la facture.</p>
+    <p>En cas de retard de paiement au-delà de 15 jours suivant la date d'échéance, le Prestataire se réserve le droit de suspendre l'accès au service jusqu'à régularisation, sans préjudice de toute autre action.</p>
+    <div class="highlight-box">
+      Conformément à l'article L.441-10 du Code de commerce, tout retard de paiement entre professionnels entraîne de plein droit l'application de pénalités de retard au taux directeur de la BCE majoré de 10 points, ainsi qu'une indemnité forfaitaire de 40 € pour frais de recouvrement.
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="legal-section" id="duree">
+    <h2>5. Durée et résiliation</h2>
+    <p>L'abonnement est souscrit sans durée minimale d'engagement. Il est reconduit tacitement chaque mois.</p>
+
+    <h3>Résiliation par le Client</h3>
+    <p>Le Client peut résilier son abonnement à tout moment par simple e-mail adressé à <a href="mailto:contact@bundlyhub.com">contact@bundlyhub.com</a>. La résiliation prend effet à la fin du mois en cours. Le service est maintenu jusqu'à cette date et aucun remboursement au prorata n'est effectué pour la période restante.</p>
+
+    <h3>Résiliation par le Prestataire</h3>
+    <p>Le Prestataire peut résilier l'abonnement avec un préavis de 30 jours par e-mail, ou sans préavis en cas de manquement grave du Client (non-paiement, usage frauduleux, violation des CGV).</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="legal-section" id="retractation">
+    <h2>6. Droit de rétractation</h2>
+    <p>Conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation de 14 jours ne s'applique pas aux services pleinement exécutés avant la fin du délai de rétractation lorsque l'exécution a commencé avec l'accord préalable et exprès du consommateur.</p>
+    <p>Pour les Clients professionnels (B2B), aucun droit de rétractation légal n'est applicable.</p>
+    <p>Néanmoins, dans un esprit commercial, le Prestataire s'engage à étudier avec bienveillance toute demande de remboursement formulée dans les 7 jours suivant la première activation du service, si celui-ci n'a pas encore produit d'effet mesurable.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="legal-section" id="obligations">
+    <h2>7. Obligations des parties</h2>
+
+    <h3>Obligations du Prestataire</h3>
+    <ul>
+      <li>Mettre en œuvre les automatisations souscrites dans les meilleurs délais suivant l'onboarding.</li>
+      <li>Assurer la maintenance et la surveillance des automatisations incluses dans l'abonnement.</li>
+      <li>Informer le Client de toute interruption planifiée ou anomalie affectant le service.</li>
+      <li>Traiter les données du Client avec confidentialité et conformément au RGPD.</li>
+    </ul>
+
+    <h3>Obligations du Client</h3>
+    <ul>
+      <li>Fournir les accès et informations nécessaires à la mise en place des automatisations.</li>
+      <li>S'assurer que les outils connectés (Google Business, CRM, Meta Ads…) sont en règle avec leurs propres conditions d'utilisation.</li>
+      <li>Régler les factures dans les délais convenus.</li>
+      <li>Informer le Prestataire de tout changement affectant le fonctionnement des automatisations (changement d'outil, de compte, etc.).</li>
+    </ul>
+  </div>
+
+  <!-- 8 -->
+  <div class="legal-section" id="responsabilite">
+    <h2>8. Responsabilité</h2>
+    <p>Le Prestataire est soumis à une obligation de moyens. Il ne saurait être tenu responsable des dommages indirects liés à l'utilisation des services (perte de chiffre d'affaires, perte de données, préjudice commercial).</p>
+    <p>La responsabilité du Prestataire est en tout état de cause limitée au montant des sommes effectivement perçues au titre du mois en cours.</p>
+    <p>Le Prestataire ne peut être tenu responsable des interruptions de service liées à des tiers (Google, Meta, hébergeurs, opérateurs) ni des modifications de politique d'accès de ces plateformes rendant tout ou partie du service indisponible.</p>
+
+    <h3>Absence de garantie de disponibilité</h3>
+    <p>BundlyHub ne garantit aucun taux de disponibilité ou de performance des automatisations. Les interruptions ponctuelles liées à la maintenance, aux mises à jour ou aux défaillances de plateformes tierces ne constituent pas un manquement contractuel de la part du Prestataire.</p>
+
+    <h3>Force majeure</h3>
+    <p>BundlyHub ne saurait être tenu responsable de toute inexécution ou retard dans l'exécution de ses obligations due à un cas de force majeure au sens de l'article 1218 du Code civil, notamment : maladie ou incapacité du prestataire, défaillance ou interruption des plateformes tierces (Google, Meta, etc.), cyberattaque, catastrophe naturelle, ou interruption des réseaux de télécommunication.</p>
+    <p>En cas de force majeure, le Prestataire en informera le Client dans les meilleurs délais. Si l'empêchement est définitif, l'abonnement sera résilié de plein droit sans indemnité d'aucune sorte.</p>
+
+    <h3>Confidentialité des accès</h3>
+    <p>BundlyHub s'engage formellement à ne pas divulguer à des tiers, ne pas utiliser à d'autres fins que celles prévues au contrat, et ne pas conserver au-delà de la relation contractuelle les accès, identifiants et données transmis par le Client pour la mise en œuvre des services. Ces informations sont traitées avec la plus stricte confidentialité et supprimées à la résiliation de l'abonnement.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="legal-section" id="ip">
+    <h2>9. Propriété intellectuelle</h2>
+    <p>Les workflows, scripts et automatisations développés par BundlyHub restent la propriété exclusive du Prestataire. La souscription à un abonnement confère au Client un droit d'usage personnel, non cessible et non transférable, pour la durée de l'abonnement.</p>
+    <p>Toute reproduction, revente ou diffusion des éléments techniques produits par BundlyHub est interdite sans accord écrit préalable.</p>
+  </div>
+
+  <!-- 10 -->
+  <div class="legal-section" id="donnees">
+    <h2>10. Données personnelles</h2>
+    <p>Dans le cadre de la relation contractuelle, BundlyHub collecte et traite les données personnelles nécessaires à l'exécution du service (coordonnées du Client, données techniques des outils connectés).</p>
+    <p>Ces données sont traitées conformément au RGPD. Elles ne sont ni vendues, ni louées, ni cédées à des tiers. Pour exercer vos droits (accès, rectification, suppression), contactez : <a href="mailto:contact@bundlyhub.com">contact@bundlyhub.com</a>.</p>
+    <p>Pour plus d'informations, consultez les <a href="mentions-legales.html">Mentions Légales</a>.</p>
+  </div>
+
+  <!-- 11 -->
+  <div class="legal-section" id="litiges">
+    <h2>11. Litiges et droit applicable</h2>
+    <p>Les présentes CGV sont soumises au droit français.</p>
+    <p>En cas de litige, les parties s'engagent à rechercher une solution amiable avant tout recours judiciaire. À défaut d'accord dans un délai de 30 jours, le litige sera soumis aux tribunaux compétents du ressort du siège du Prestataire.</p>
+    <p>Pour les Clients particuliers (B2C), conformément à l'article L.616-1 du Code de la consommation, il est possible de recourir gratuitement à un médiateur de la consommation. La Commission européenne propose également une plateforme de règlement en ligne des litiges : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">Bundly<em>Hub</em></div>
+  <p>© 2026 BundlyHub — Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="mailto:contact@bundlyhub.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

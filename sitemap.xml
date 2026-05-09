@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Landing principale -->
+  <url>
+    <loc>https://www.bundlyhub.com/</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Articles SEO -->
+  <url>
+    <loc>https://www.bundlyhub.com/comment-repondre-aux-avis-google-automatiquement</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bundlyhub.com/comment-relancer-un-devis-sans-y-penser</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bundlyhub.com/comment-ne-plus-perdre-de-leads-meta</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pages légales -->
+  <url>
+    <loc>https://www.bundlyhub.com/mentions-legales</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bundlyhub.com/cgv</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>
