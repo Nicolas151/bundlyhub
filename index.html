@@ -1167,10 +1167,7 @@
   function handleSubmit() {
     // Honeypot check — si rempli, c'est un bot : on simule le succès sans rien envoyer
     const hp = document.getElementById('website').value;
-    if (hp) {
-      showSuccess();
-      return;
-    }
+    if (hp) { showSuccess(); return; }
 
     // Validation basique
     const prenom = document.getElementById('prenom').value.trim();
@@ -1179,7 +1176,6 @@
     const offre  = document.getElementById('offre').value;
 
     if (!prenom || !nom || !email || !offre) {
-      // Mise en évidence des champs vides
       ['prenom','nom','email','offre'].forEach(id => {
         const el = document.getElementById(id);
         if (!el.value.trim()) {
@@ -1194,16 +1190,22 @@
     btn.disabled = true;
     btn.textContent = 'Envoi en cours…';
 
-    // Construction du lien mailto
     const message = document.getElementById('message').value.trim();
-    const subject = encodeURIComponent(`[BundlyHub] Demande — ${offre}`);
-    const body = encodeURIComponent(
-      `Prénom : ${prenom}\nNom : ${nom}\nE-mail : ${email}\nOffre : ${offre}${message ? '\n\nMessage :\n' + message : ''}`
-    );
-    window.location.href = `mailto:contact@bundlyhub.com?subject=${subject}&body=${body}`;
 
-    // Affichage succès après 600ms (temps d'ouverture du client mail)
-    setTimeout(showSuccess, 600);
+    fetch('https://n8n.capozzi.fr/webhook/bd1b458c-146b-4a44-9c7a-8fee4bc57530', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prenom, nom, email, offre, message })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Erreur réseau');
+      showSuccess();
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma demande →';
+      alert('Une erreur est survenue. Merci de réessayer ou de nous contacter directement à contact@bundlyhub.com');
+    });
   }
 
   function showSuccess() {
