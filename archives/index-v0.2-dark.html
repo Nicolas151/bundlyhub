@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BundlyHub — Automatisez. Vendez. Répétez.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #07080f;
+      --bg2:      #0d0f1c;
+      --card:     #11141f;
+      --border:   #1e2236;
+      --accent:   #4f8fff;
+      --accent2:  #00e5c3;
+      --accent3:  #ff6b6b;
+      --text:     #e8ecf4;
+      --muted:    #6b7394;
+      --white:    #ffffff;
+      --glow:     rgba(79,143,255,.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    /* ── NOISE OVERLAY ─────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ───────────────────────────────────── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(7,8,15,.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.35rem;
+      letter-spacing: -.02em; color: var(--white);
+    }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; gap: 36px; list-style: none; }
+    nav ul a { color: var(--muted); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    nav ul a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff; border: none;
+      padding: 10px 24px; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 500;
+      cursor: pointer; transition: opacity .2s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+
+    /* ── HERO ──────────────────────────────────── */
+    .hero {
+      min-height: 92vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+
+    /* Gradient mesh blobs */
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: .25; pointer-events: none;
+    }
+    .blob1 { width: 600px; height: 500px; background: #4f8fff; top: -120px; left: -180px; }
+    .blob2 { width: 500px; height: 450px; background: #00e5c3; bottom: -80px; right: -140px; }
+    .blob3 { width: 350px; height: 350px; background: #6c63ff; top: 30%; left: 50%; transform: translateX(-50%); opacity: .14; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(79,143,255,.12);
+      border: 1px solid rgba(79,143,255,.3);
+      color: var(--accent);
+      font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 100px;
+      margin-bottom: 32px;
+      animation: fadeUp .7s ease both;
+    }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); animation: pulse 2s infinite; }
+
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: clamp(2.6rem, 6vw, 5.2rem);
+      line-height: 1.06; letter-spacing: -.04em;
+      max-width: 820px;
+      animation: fadeUp .8s .1s ease both;
+    }
+
+    h1 .hl {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      margin-top: 24px; max-width: 560px;
+      color: var(--muted); font-size: 1.05rem; line-height: 1.7;
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    .hero-ctas {
+      display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #6c8fff);
+      color: #fff; border: none;
+      padding: 15px 34px; border-radius: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500;
+      cursor: pointer; transition: transform .15s, box-shadow .2s;
+      box-shadow: 0 0 30px rgba(79,143,255,.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(79,143,255,.45); }
+
+    .btn-ghost {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); padding: 15px 34px; border-radius: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 400;
+      cursor: pointer; transition: border-color .2s, background .2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(79,143,255,.06); }
+
+    .hero-proof {
+      margin-top: 64px; display: flex; align-items: center; gap: 28px;
+      animation: fadeUp .8s .4s ease both;
+    }
+    .proof-item { display: flex; flex-direction: column; align-items: center; }
+    .proof-num {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .proof-label { color: var(--muted); font-size: .8rem; margin-top: 2px; }
+    .proof-sep { width: 1px; height: 40px; background: var(--border); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION TITLES ────────────────────────── */
+    .section-label {
+      display: inline-block;
+      color: var(--accent); font-size: .75rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -.03em; line-height: 1.12;
+    }
+
+    .section-sub {
+      color: var(--muted); max-width: 540px; margin-top: 14px;
+      font-size: .98rem; line-height: 1.7;
+    }
+
+    /* ── PROBLEM ───────────────────────────────── */
+    .problem {
+      padding: 100px 60px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      max-width: 900px; margin-top: 52px; width: 100%;
+    }
+
+    .pain-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 24px;
+      transition: border-color .25s;
+    }
+    .pain-card:hover { border-color: rgba(79,143,255,.35); }
+
+    .pain-icon { font-size: 2rem; margin-bottom: 14px; }
+
+    .pain-card p { color: var(--muted); font-size: .92rem; margin-top: 8px; }
+    .pain-card strong { color: var(--text); font-size: 1rem; display: block; }
+
+    /* ── OFFERS ────────────────────────────────── */
+    .offers {
+      padding: 100px 60px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .offers-header { text-align: center; margin-bottom: 60px; }
+
+    .offers-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+
+    .offer-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 36px 30px;
+      display: flex; flex-direction: column;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+
+    .offer-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--c1), var(--c2));
+    }
+
+    .offer-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79,143,255,.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .offer-card.c-blue { --c1: #4f8fff; --c2: #6c8fff; }
+    .offer-card.c-teal { --c1: #00e5c3; --c2: #00b8a8; }
+    .offer-card.c-red  { --c1: #ff6b6b; --c2: #ff9a5c; }
+
+    .offer-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 18px; padding: 5px 12px;
+      border-radius: 100px; width: fit-content;
+    }
+    .c-blue .offer-tag { background: rgba(79,143,255,.12); color: var(--accent); }
+    .c-teal .offer-tag { background: rgba(0,229,195,.12); color: var(--accent2); }
+    .c-red  .offer-tag { background: rgba(255,107,107,.12); color: var(--accent3); }
+
+    .offer-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1.3rem; letter-spacing: -.02em;
+      margin-bottom: 12px;
+    }
+
+    .offer-card > p { color: var(--muted); font-size: .92rem; line-height: 1.65; flex: 1; }
+
+    .offer-benefits {
+      list-style: none; margin-top: 24px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    .offer-benefits li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .9rem; color: var(--text);
+    }
+
+    .check {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; margin-top: 1px;
+    }
+    .c-blue .check { background: rgba(79,143,255,.18); color: var(--accent); }
+    .c-teal .check { background: rgba(0,229,195,.18); color: var(--accent2); }
+    .c-red  .check { background: rgba(255,107,107,.18); color: var(--accent3); }
+
+    .offer-price {
+      margin-top: 28px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: baseline; gap: 6px;
+    }
+
+    .price-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 2.2rem;
+    }
+    .c-blue .price-num { color: var(--accent); }
+    .c-teal .price-num { color: var(--accent2); }
+    .c-red  .price-num { color: var(--accent3); }
+
+    .price-period { color: var(--muted); font-size: .88rem; }
+
+    .offer-cta {
+      margin-top: 18px; width: 100%;
+      padding: 13px; border-radius: 9px; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: .92rem; font-weight: 500;
+      cursor: pointer; transition: opacity .2s, transform .15s;
+    }
+
+    .c-blue .offer-cta { background: rgba(79,143,255,.15); color: var(--accent); border: 1px solid rgba(79,143,255,.25); }
+    .c-teal .offer-cta { background: rgba(0,229,195,.15); color: var(--accent2); border: 1px solid rgba(0,229,195,.25); }
+    .c-red  .offer-cta { background: rgba(255,107,107,.15); color: var(--accent3); border: 1px solid rgba(255,107,107,.25); }
+    .offer-cta:hover { opacity: .8; transform: translateY(-1px); }
+
+    /* ── HOW IT WORKS ──────────────────────────── */
+    .how {
+      padding: 100px 60px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+
+    .steps {
+      display: flex; align-items: flex-start; gap: 0;
+      max-width: 900px; margin-top: 60px; width: 100%;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute; top: 28px; left: calc(16.66% + 0px); right: calc(16.66%);
+      height: 1px; background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: .3;
+    }
+
+    .step {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      padding: 0 20px;
+    }
+
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem;
+      color: var(--accent); margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+
+    .step h4 {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .step p { color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+    /* ── TESTIMONIAL / ROI ─────────────────────── */
+    .roi {
+      padding: 80px 60px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .roi-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; align-items: center; gap: 80px;
+    }
+
+    .roi-text { flex: 1; }
+    .roi-text h2 { margin-bottom: 20px; }
+    .roi-text p { color: var(--muted); line-height: 1.75; font-size: .98rem; }
+
+    .roi-calc {
+      flex-shrink: 0; width: 320px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 32px 28px;
+    }
+
+    .calc-title {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem;
+      margin-bottom: 20px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .08em; font-size: .8rem;
+    }
+
+    .calc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .calc-row:last-child { border: none; }
+    .calc-row .neg { color: var(--accent3); }
+    .calc-row .pos { color: var(--accent2); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.4rem; }
+    .calc-label { color: var(--muted); }
+
+    /* ── FAQ ───────────────────────────────────── */
+    .faq {
+      padding: 100px 60px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    .faq-grid {
+      max-width: 760px; width: 100%; margin-top: 52px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 20px 24px; text-align: left;
+      font-family: 'DM Sans', sans-serif; font-size: .97rem; font-weight: 500;
+      color: var(--text); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; transition: color .2s;
+    }
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-arrow {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border-radius: 50%; background: var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; transition: transform .3s, background .2s;
+    }
+
+    .faq-item.open .faq-arrow { transform: rotate(180deg); background: rgba(79,143,255,.2); color: var(--accent); }
+
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .3s ease;
+      color: var(--muted); font-size: .92rem; line-height: 1.7;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+    /* ── CTA BAND ──────────────────────────────── */
+    .cta-band {
+      padding: 100px 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(79,143,255,.12) 0%, transparent 70%);
+    }
+
+    .cta-band h2 { max-width: 600px; margin: 0 auto 16px; }
+    .cta-band p { color: var(--muted); max-width: 480px; margin: 0 auto 40px; }
+
+    /* ── FOOTER ────────────────────────────────── */
+    footer {
+      padding: 40px 60px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    footer p { color: var(--muted); font-size: .85rem; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); font-size: .85rem; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      nav ul { display: none; }
+      .hero { padding: 60px 24px 50px; }
+      .hero-proof { flex-wrap: wrap; justify-content: center; gap: 20px; }
+      .proof-sep { display: none; }
+      .problem, .how, .faq, .cta-band { padding: 70px 24px; }
+      .offers { padding: 70px 24px; }
+      .offers-grid { grid-template-columns: 1fr; max-width: 440px; }
+      .pain-grid { grid-template-columns: 1fr; max-width: 440px; }
+      .steps { flex-direction: column; align-items: center; gap: 32px; }
+      .steps::before { display: none; }
+      .roi { padding: 70px 24px; }
+      .roi-inner { flex-direction: column; gap: 40px; }
+      .roi-calc { width: 100%; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav>
+  <div class="logo">Bundly<span>Hub</span></div>
+  <ul>
+    <li><a href="#offres">Nos offres</a></li>
+    <li><a href="#comment">Comment ça marche</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Démarrer</button>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Automatisation sans engagement longue durée
+  </div>
+
+  <h1>Votre business tourne.<br/><span class="hl">Même quand vous dormez.</span></h1>
+
+  <p class="hero-sub">
+    BundlyHub branche des automatisations clé-en-main sur votre activité.
+    Pas de frais d'installation. Un abonnement mensuel. Des résultats dès la première semaine.
+  </p>
+
+  <div class="hero-ctas">
+    <button class="btn-primary" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})">Voir les offres →</button>
+    <button class="btn-ghost" onclick="document.getElementById('comment').scrollIntoView({behavior:'smooth'})">Comment ça marche</button>
+  </div>
+
+  <div class="hero-proof">
+    <div class="proof-item">
+      <span class="proof-num">3h+</span>
+      <span class="proof-label">gagnées par semaine</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-num">0€</span>
+      <span class="proof-label">de frais d'installation</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-num">48h</span>
+      <span class="proof-label">pour être opérationnel</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-num">-30%</span>
+      <span class="proof-label">de leads perdus</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ───────────────────────────────────── -->
+<section class="problem">
+  <span class="section-label">Le problème</span>
+  <h2>Combien de temps perdez-vous<br/>chaque semaine sur ces tâches ?</h2>
+  <p class="section-sub">Ces tâches répétitives vous coûtent du temps, de l'argent et des clients. On les automatise pour vous.</p>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">😤</div>
+      <strong>Répondre aux avis Google</strong>
+      <p>Chaque avis sans réponse fait baisser votre score de confiance. Répondre manuellement = 45 min/semaine.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📋</div>
+      <strong>Relancer des devis oubliés</strong>
+      <p>Un devis envoyé et jamais signé, c'est de l'argent laissé sur la table. Personne ne pense à relancer.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📉</div>
+      <strong>Des leads Facebook perdus</strong>
+      <p>Chaque lead non contacté sous 5 minutes a 80% de chances de signer chez un concurrent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFFERS ─────────────────────────────────────── -->
+<section class="offers" id="offres">
+  <div class="offers-header">
+    <span class="section-label">Nos automatisations</span>
+    <h2>Trois offres. Trois résultats mesurables.</h2>
+    <p class="section-sub" style="margin:14px auto 0;">Sans engagement annuel. Sans frais cachés. Résiliable à tout moment.</p>
+  </div>
+
+  <div class="offers-grid">
+
+    <!-- OFFRE 1 -->
+    <div class="offer-card c-blue">
+      <div class="offer-tag">⭐ Réputation</div>
+      <h3>Pilote Avis Google</h3>
+      <p>On génère et publie automatiquement une réponse personnalisée à chaque avis Google — positif ou négatif — dans les 2 heures.</p>
+      <ul class="offer-benefits">
+        <li><span class="check">✓</span> Réponse automatique sous 2h</li>
+        <li><span class="check">✓</span> Ton adapté à chaque type d'avis</li>
+        <li><span class="check">✓</span> Rapport mensuel de vos notes</li>
+        <li><span class="check">✓</span> Zéro intervention de votre part</li>
+      </ul>
+      <div class="offer-price">
+        <span class="price-num">69€</span>
+        <span class="price-period">/ mois</span>
+      </div>
+      <button class="offer-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Je veux cette offre</button>
+    </div>
+
+    <!-- OFFRE 2 -->
+    <div class="offer-card c-teal">
+      <div class="offer-tag">💰 Conversion</div>
+      <h3>Relance Devis Auto</h3>
+      <p>Chaque devis non signé déclenche une séquence de relances automatiques par e-mail ou SMS, aux bons moments.</p>
+      <ul class="offer-benefits">
+        <li><span class="check">✓</span> Séquence sur 7, 14 et 21 jours</li>
+        <li><span class="check">✓</span> Relances personnalisées par client</li>
+        <li><span class="check">✓</span> Notification dès qu'un devis est signé</li>
+        <li><span class="check">✓</span> Compatible tous logiciels de devis</li>
+      </ul>
+      <div class="offer-price">
+        <span class="price-num">79€</span>
+        <span class="price-period">/ mois</span>
+      </div>
+      <button class="offer-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Je veux cette offre</button>
+    </div>
+
+    <!-- OFFRE 3 -->
+    <div class="offer-card c-red">
+      <div class="offer-tag">🎯 Leads</div>
+      <h3>Sync Leads Facebook</h3>
+      <p>Chaque lead généré via vos publicités Facebook est instantanément envoyé dans votre CRM ou Google Sheet, avec une notification immédiate.</p>
+      <ul class="offer-benefits">
+        <li><span class="check">✓</span> Transfert en temps réel</li>
+        <li><span class="check">✓</span> Compatible HubSpot, Notion, Sheets…</li>
+        <li><span class="check">✓</span> Alerte SMS ou email à chaque lead</li>
+        <li><span class="check">✓</span> Tableau de bord de suivi inclus</li>
+      </ul>
+      <div class="offer-price">
+        <span class="price-num">99€</span>
+        <span class="price-period">/ mois</span>
+      </div>
+      <button class="offer-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Je veux cette offre</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ─────────────────────────────── -->
+<section class="how" id="comment">
+  <span class="section-label">Processus</span>
+  <h2>Opérationnel en 48 heures.</h2>
+  <p class="section-sub">Pas de réunions interminables. On s'occupe de tout côté technique.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Vous choisissez une offre</h4>
+      <p>Sélectionnez l'automatisation qui correspond le mieux à votre problème du moment.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>On connecte vos outils</h4>
+      <p>Un appel de 20 minutes suffit. On branche tout côté technique sans accès sensible.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Ça tourne tout seul</h4>
+      <p>En 48h, votre automatisation est live. Vous recevez un rapport chaque semaine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ROI ────────────────────────────────────────── -->
+<section class="roi">
+  <div class="roi-inner">
+    <div class="roi-text">
+      <span class="section-label">Retour sur investissement</span>
+      <h2>Un abonnement qui se rembourse tout seul.</h2>
+      <p>Si vous passez 3h par semaine à répondre aux avis, relancer des devis ou copier des leads manuellement, vous dépensez plus de 300€ de temps chaque mois. Nos automatisations à 69–99€/mois, c'est mathématiquement évident.</p>
+      <p style="margin-top:14px;">Et si une relance décroche un seul devis supplémentaire ? L'abonnement est remboursé pour les 6 prochains mois.</p>
+    </div>
+    <div class="roi-calc">
+      <p class="calc-title">Calcul rapide — Artisan (1 devis/sem)</p>
+      <div class="calc-row">
+        <span class="calc-label">Temps perdu/mois</span>
+        <span class="neg">−12h</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Coût à 25€/h</span>
+        <span class="neg">−300€</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Abonnement BundlyHub</span>
+        <span class="neg">−79€</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Économie nette</span>
+        <span class="pos">+221€</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────── -->
+<section class="faq" id="faq">
+  <span class="section-label">Questions fréquentes</span>
+  <h2>On répond à vos doutes.</h2>
+
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Aucun engagement ? Je peux vraiment arrêter quand je veux ?
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Oui, sans condition. Vous résiliez par e-mail à tout moment. L'automatisation est coupée sous 24h. Aucun frais de résiliation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Est-ce que vous accédez à mes données sensibles ?
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Non. On se connecte uniquement aux outils nécessaires (ex : votre fiche Google Business pour les avis). Aucun accès à vos fichiers, mails ou données bancaires.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Je ne suis pas technique. Est-ce que c'est compliqué à mettre en place ?
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Pas du tout. Un appel de 20 minutes et on s'occupe de tout. Vous n'avez rien à installer, rien à configurer. On vous envoie juste quelques accès à autoriser.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Puis-je prendre plusieurs offres en même temps ?
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Oui, et on applique une remise de 15% à partir de 2 offres souscrites simultanément. Contactez-nous pour un devis groupé.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Que se passe-t-il si l'automatisation tombe en panne ?
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">On surveille chaque automatisation 7j/7. En cas d'anomalie, on est alertés automatiquement et on corrige sous 4h ouvrées. Votre abonnement inclut la maintenance.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ───────────────────────────────────── -->
+<section class="cta-band" id="contact">
+  <span class="section-label">Passez à l'action</span>
+  <h2>Prêt à arrêter de perdre du temps sur des tâches répétitives ?</h2>
+  <p>Choisissez votre automatisation et soyez opérationnel dans les 48 heures. Sans frais d'installation. Sans engagement.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <button class="btn-primary" onclick="window.location.href='mailto:contact@bundlyhub.com?subject=Je veux démarrer'">Démarrer maintenant →</button>
+    <button class="btn-ghost" onclick="window.location.href='mailto:contact@bundlyhub.com?subject=Question avant démarrage'">Poser une question</button>
+  </div>
+  <p style="color:var(--muted);font-size:.82rem;margin-top:20px;">Réponse sous 24h · Aucun commercial · Juste de l'efficacité</p>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="logo">Bundly<span>Hub</span></div>
+  <p style="color:var(--muted);font-size:.82rem;">© 2025 BundlyHub — Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="mailto:contact@bundlyhub.com">Contact</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">CGV</a>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.offer-card, .pain-card, .step, .roi-calc').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
