@@ -541,6 +541,133 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* ── CONTACT FORM ────────────────────────── */
+    .contact {
+      padding: 100px 64px;
+      border-bottom: 1.5px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .contact-left { position: sticky; top: 110px; }
+    .contact-left h2 { margin-bottom: 16px; }
+    .contact-left p { color: var(--muted); font-size: .95rem; line-height: 1.72; }
+
+    .contact-perks {
+      list-style: none; margin-top: 28px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .contact-perks li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .9rem; color: var(--ink2);
+    }
+    .perk-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--orange); flex-shrink: 0;
+    }
+
+    .contact-form {
+      background: var(--white);
+      border: 1.5px solid var(--border); border-radius: 6px;
+      padding: 44px 40px;
+    }
+
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-row.full { grid-template-columns: 1fr; }
+
+    .form-group {
+      display: flex; flex-direction: column; gap: 7px;
+    }
+
+    .form-group label {
+      font-size: .78rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      padding: 12px 14px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .93rem; color: var(--ink);
+      outline: none;
+      transition: border-color .2s, background .2s;
+      appearance: none; -webkit-appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7f6e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px; cursor: pointer;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+      background: var(--white);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #b5aa99; }
+
+    /* Honeypot — invisible aux humains, visible aux bots */
+    .hp-field {
+      position: absolute; left: -9999px; top: -9999px;
+      opacity: 0; height: 0; overflow: hidden;
+      pointer-events: none; tab-index: -1;
+    }
+
+    .form-submit {
+      margin-top: 24px; width: 100%;
+      background: var(--orange); color: #fff; border: none;
+      padding: 15px; border-radius: 3px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .92rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      cursor: pointer; transition: background .2s, transform .15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: var(--ink); transform: translateY(-1px); }
+    .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      text-align: center; margin-top: 14px;
+      color: var(--muted); font-size: .8rem; line-height: 1.5;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 48px 24px; gap: 16px;
+    }
+    .form-success.visible { display: flex; }
+    .form-fields.hidden { display: none; }
+
+    .success-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(30,92,58,.1); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+    }
+    .form-success h3 {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.5rem; letter-spacing: -.02em; color: var(--ink);
+    }
+    .form-success p { color: var(--muted); font-size: .92rem; max-width: 280px; }
+
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
@@ -568,6 +695,10 @@
 
       .cta-band { padding: 70px 24px; }
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+      .contact { grid-template-columns: 1fr; gap: 40px; padding: 70px 24px; }
+      .contact-left { position: static; }
+      .contact-form { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -847,13 +978,91 @@
   </div>
 </section>
 
-<!-- ── CTA ────────────────────────────────────────── -->
-<section class="cta-band" id="contact">
-  <h2>Prêt à arrêter de perdre du<br/>temps sur des tâches <em>répétitives ?</em></h2>
-  <p>Choisissez votre automatisation et soyez opérationnel dans les 48 heures. Sans frais d'installation. Sans engagement.</p>
+<!-- ── CONTACT FORM ──────────────────────────────── -->
+<section class="contact" id="contact">
+
+  <div class="contact-left reveal">
+    <span class="section-tag">Contact</span>
+    <h2>Démarrons<br/><em>ensemble.</em></h2>
+    <p>Dites-nous quelle automatisation vous intéresse. On revient vers vous sous 24h pour caler un appel de 20 minutes — et c'est parti.</p>
+    <ul class="contact-perks">
+      <li><span class="perk-dot"></span> Zéro frais d'installation</li>
+      <li><span class="perk-dot"></span> Opérationnel en 48h</li>
+      <li><span class="perk-dot"></span> Sans engagement, résiliable à tout moment</li>
+      <li><span class="perk-dot"></span> Réponse garantie sous 24h</li>
+    </ul>
+  </div>
+
+  <div class="contact-form reveal">
+
+    <!-- Champs visibles -->
+    <div class="form-fields" id="formFields">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" placeholder="Jean" autocomplete="given-name" required />
+        </div>
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" required />
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="jean@monentreprise.fr" autocomplete="email" required />
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="offre">Offre souhaitée</label>
+          <select id="offre" name="offre" required>
+            <option value="" disabled selected>Choisissez une offre…</option>
+            <option value="avis">⭐ Pilote Avis Google — 69€/mois</option>
+            <option value="devis">💰 Relance Devis Auto — 79€/mois</option>
+            <option value="leads">🎯 Sync Leads Facebook — 99€/mois</option>
+            <option value="plusieurs">Plusieurs offres (remise 15%)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="message">Message <span style="font-weight:400;text-transform:none;letter-spacing:0">(facultatif)</span></label>
+          <textarea id="message" name="message" placeholder="Décrivez votre situation en quelques mots…"></textarea>
+        </div>
+      </div>
+
+      <!-- Honeypot — ne pas toucher -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Ne pas remplir</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <button type="button" class="form-submit" id="submitBtn" onclick="handleSubmit()">
+        Envoyer ma demande →
+      </button>
+      <p class="form-note">Aucun démarchage commercial · Données confidentielles</p>
+    </div>
+
+    <!-- État succès -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✓</div>
+      <h3>Message envoyé !</h3>
+      <p>On revient vers vous sous 24h pour caler votre appel de démarrage.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA BAND ──────────────────────────────────── -->
+<section class="cta-band">
+  <h2>Déjà convaincu ?<br/><em>Lancez-vous.</em></h2>
+  <p>Opérationnel en 48h. Sans frais d'installation. Sans engagement.</p>
   <div class="cta-band-btns">
-    <button class="btn-white" onclick="window.location.href='mailto:contact@bundlyhub.com?subject=Je veux démarrer'">Démarrer maintenant →</button>
-    <button class="btn-trans" onclick="window.location.href='mailto:contact@bundlyhub.com?subject=Question'">Poser une question</button>
+    <button class="btn-white" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Remplir le formulaire →</button>
   </div>
   <p class="cta-note">Réponse sous 24h · Aucun commercial · Juste de l'efficacité</p>
 </section>
@@ -875,6 +1084,53 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
+  }
+
+  function handleSubmit() {
+    // Honeypot check — si rempli, c'est un bot : on simule le succès sans rien envoyer
+    const hp = document.getElementById('website').value;
+    if (hp) {
+      showSuccess();
+      return;
+    }
+
+    // Validation basique
+    const prenom = document.getElementById('prenom').value.trim();
+    const nom    = document.getElementById('nom').value.trim();
+    const email  = document.getElementById('email').value.trim();
+    const offre  = document.getElementById('offre').value;
+
+    if (!prenom || !nom || !email || !offre) {
+      // Mise en évidence des champs vides
+      ['prenom','nom','email','offre'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = '#c0392b';
+          el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+        }
+      });
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
+    // Construction du lien mailto
+    const message = document.getElementById('message').value.trim();
+    const subject = encodeURIComponent(`[BundlyHub] Demande — ${offre}`);
+    const body = encodeURIComponent(
+      `Prénom : ${prenom}\nNom : ${nom}\nE-mail : ${email}\nOffre : ${offre}${message ? '\n\nMessage :\n' + message : ''}`
+    );
+    window.location.href = `mailto:contact@bundlyhub.com?subject=${subject}&body=${body}`;
+
+    // Affichage succès après 600ms (temps d'ouverture du client mail)
+    setTimeout(showSuccess, 600);
+  }
+
+  function showSuccess() {
+    document.getElementById('formFields').classList.add('hidden');
+    document.getElementById('formSuccess').classList.add('visible');
   }
 
   // Scroll reveal
