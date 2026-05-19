@@ -734,6 +734,52 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* ── EXEMPLES ── */
+    .exemples {
+      padding: 100px 64px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .exemples-header { margin-bottom: 56px; }
+
+    .exemples-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--border);
+      border: 1.5px solid var(--border); border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .exemple-card {
+      background: var(--white);
+      padding: 36px 30px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: background .2s;
+    }
+    .exemple-card:hover { background: var(--cream); }
+
+    .exemple-icon { font-size: 1.6rem; }
+
+    .exemple-card strong {
+      font-family: 'Fraunces', serif;
+      font-weight: 700; font-size: 1.05rem;
+      letter-spacing: -.01em; color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .exemple-card p {
+      color: var(--muted); font-size: .88rem; line-height: 1.65;
+    }
+
+    .exemples-cta {
+      margin-top: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+      padding: 28px 36px;
+      background: var(--cream2); border: 1.5px solid var(--border); border-radius: 4px;
+    }
+
+    .exemples-cta p { color: var(--ink2); font-size: .97rem; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
@@ -747,7 +793,11 @@
       .trust-band { padding: 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
       .trust-items { gap: 20px; }
 
-      .problem { grid-template-columns: 1fr; gap: 40px; padding: 70px 24px; }
+      .exemples { padding: 70px 24px; }
+      .exemples-grid { grid-template-columns: 1fr; }
+      .exemples-cta { flex-direction: column; align-items: flex-start; }
+
+      
       .problem-left { position: static; }
 
       .how { padding: 70px 24px; }
@@ -819,17 +869,24 @@
       Automatisation sur-mesure · TPE & PME
     </div>
 
-    <h1>Automatisez<br/>ce qui freine<br/><em>votre croissance.</em></h1>
+    <h1>Vous faites encore<br/>ça <em>à la main ?</em></h1>
 
     <p class="hero-sub">
-      BundlyHub conçoit, branche et maintient des automatisations sur-mesure
-      adaptées aux besoins spécifiques de votre entreprise.
-      Un abonnement mensuel. Zéro frais d'installation. Des résultats mesurables.
+      Relances clients, exports, saisies, synchronisation d'outils, génération de documents…
+      Décrivez-nous la tâche qui vous prend du temps. On vous dit en 24h si elle peut être automatisée — et comment.
     </p>
 
     <div class="hero-ctas">
-      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Discutons de votre projet →</button>
-      <button class="btn-outline" onclick="document.getElementById('comment').scrollIntoView({behavior:'smooth'})">Comment ça marche</button>
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Décrire ma tâche répétitive →</button>
+      <button class="btn-outline" onclick="document.getElementById('exemples').scrollIntoView({behavior:'smooth'})">Voir des exemples</button>
+    </div>
+
+    <div style="margin-top:32px;padding:18px 20px;background:rgba(212,80,10,.07);border:1px solid rgba(212,80,10,.2);border-radius:4px;display:flex;gap:14px;align-items:flex-start;">
+      <span style="font-size:1.2rem;flex-shrink:0;margin-top:2px;">🎁</span>
+      <div>
+        <strong style="font-size:.9rem;color:var(--ink);display:block;margin-bottom:4px;">Diagnostic gratuit par écrit</strong>
+        <span style="font-size:.84rem;color:var(--muted);line-height:1.55;">Décrivez une tâche manuelle. On vous répond avec ce qui peut être automatisé, comment, et le gain de temps probable. Aucun appel obligatoire. Aucun engagement.</span>
+      </div>
     </div>
   </div>
 
@@ -884,6 +941,53 @@
   </div>
 </div>
 
+<!-- ── EXEMPLES ── -->
+<section class="exemples" id="exemples">
+  <div class="exemples-header reveal">
+    <span class="section-tag">Exemples concrets</span>
+    <h2>Vous reconnaissez-vous<br/>dans l'une de ces <em>situations ?</em></h2>
+    <p class="section-sub" style="max-width:520px;">Ce sont des tâches que des entreprises comme la vôtre font encore à la main — et qu'on automatise régulièrement.</p>
+  </div>
+
+  <div class="exemples-grid">
+    <div class="exemple-card reveal">
+      <div class="exemple-icon">📋</div>
+      <strong>Formulaire → tableur + email</strong>
+      <p>Un client remplit un formulaire : une ligne s'ajoute automatiquement dans Google Sheets et un email de confirmation part immédiatement.</p>
+    </div>
+    <div class="exemple-card reveal">
+      <div class="exemple-icon">🔁</div>
+      <strong>Relances prospects automatiques</strong>
+      <p>Un prospect ne répond pas sous 48h ? Une séquence de relances personnalisées part automatiquement, aux bons intervalles.</p>
+    </div>
+    <div class="exemple-card reveal">
+      <div class="exemple-icon">📄</div>
+      <strong>Extraction de données depuis des PDF</strong>
+      <p>Des factures ou bons de commande arrivent par email : les informations clés sont extraites et rangées dans un tableau sans intervention manuelle.</p>
+    </div>
+    <div class="exemple-card reveal">
+      <div class="exemple-icon">📝</div>
+      <strong>Génération de devis ou documents</strong>
+      <p>Un formulaire rempli déclenche automatiquement la création d'un devis ou d'un document pré-rempli, prêt à envoyer.</p>
+    </div>
+    <div class="exemple-card reveal">
+      <div class="exemple-icon">🔗</div>
+      <strong>Synchronisation entre vos outils</strong>
+      <p>Notion, Airtable, Gmail, Google Sheets, Stripe, HubSpot, votre CRM… Les données circulent automatiquement sans copier-coller.</p>
+    </div>
+    <div class="exemple-card reveal">
+      <div class="exemple-icon">📊</div>
+      <strong>Reporting automatique</strong>
+      <p>Un résumé de vos indicateurs clés est compilé et envoyé automatiquement à la fréquence que vous choisissez, sans manipulation manuelle.</p>
+    </div>
+  </div>
+
+  <div class="exemples-cta reveal">
+    <p>Votre cas n'est pas dans la liste ? <strong>C'est souvent automatisable quand même.</strong></p>
+    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Décrire ma tâche répétitive →</button>
+  </div>
+</section>
+
 <!-- ── PROBLEM ── -->
 <section class="problem">
   <div class="problem-left reveal">
@@ -930,7 +1034,7 @@
       <div class="step-label">Étape</div>
       <div class="step-num">01</div>
       <h4>Vous décrivez votre besoin</h4>
-      <p>Un échange de 30 minutes pour comprendre vos processus, vos outils, et ce que vous voulez automatiser. Aucune connaissance technique requise.</p>
+      <p>Décrivez librement la tâche qui vous prend du temps. Pas besoin d'être technique — on s'adapte à votre niveau de détail.</p>
       <span class="step-duration">Jour 0</span>
     </div>
     <div class="step reveal">
@@ -1099,11 +1203,11 @@
         Comment est défini le tarif de mon automatisation ?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">Le tarif dépend de la complexité de l'automatisation, du nombre d'outils connectés et du volume traité. Après un premier échange de 30 minutes, on vous soumet un devis mensuel clair et sans surprise. Aucun frais d'installation.</div>
+      <div class="faq-a">Le tarif dépend de la complexité de l'automatisation, du nombre d'outils connectés et du volume traité. Après avoir analysé votre besoin par écrit, on vous soumet un devis mensuel clair et sans surprise. Aucun frais d'installation.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
-        Je peux vraiment arrêter quand je veux ?
+        On peut vraiment arrêter quand on veut ?
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">Oui, sans condition ni préavis. Vous nous envoyez un e-mail et l'automatisation est coupée sous 24h. Vous ne payez que le mois en cours — aucun frais de résiliation.</div>
@@ -1142,7 +1246,7 @@
 <!-- ── CTA BAND ── -->
 <section class="cta-band">
   <h2>Un processus à automatiser ?<br/><em>Parlons-en.</em></h2>
-  <p>30 minutes pour comprendre votre besoin. Une proposition sur-mesure sous 24h.</p>
+  <p>Décrivez votre besoin par écrit. Une proposition sur-mesure sous 24h.</p>
   <div class="cta-band-btns">
     <button class="btn-white" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Prendre contact →</button>
   </div>
@@ -1152,20 +1256,21 @@
 <!-- ── CONTACT ── -->
 <section class="contact" id="contact">
   <div class="contact-left reveal">
-    <span class="section-tag">Contact</span>
-    <h2>Décrivez-nous<br/>votre <em>besoin.</em></h2>
-    <p>Dites-nous ce que vous voulez automatiser. On revient vers vous rapidement pour caler un échange de 30 minutes — et on vous soumet une proposition sur-mesure.</p>
+    <span class="section-tag">Diagnostic gratuit</span>
+    <h2>Décrivez une tâche.<br/><em>On analyse,<br/>vous décidez.</em></h2>
+    <p>Décrivez librement ce que vous faites encore à la main. On vous répond sous 24h avec une analyse claire : ce qui peut être automatisé, comment, et ce que ça vous ferait gagner. Tout par écrit.</p>
     <ul class="contact-perks">
-      <li><span class="perk-dot"></span> Zéro frais d'installation</li>
-      <li><span class="perk-dot"></span> Tarif mensuel sur devis, sans surprise</li>
-      <li><span class="perk-dot"></span> Sans engagement, résiliable à tout moment</li>
+      <li><span class="perk-dot"></span> Réponse par écrit — aucun appel obligatoire</li>
+      <li><span class="perk-dot"></span> Aucun engagement, aucune relance commerciale</li>
+      <li><span class="perk-dot"></span> Si on peut vous aider, on vous le dit clairement</li>
+      <li><span class="perk-dot"></span> Si on ne peut pas, on vous le dit aussi</li>
       <li><span class="perk-dot"></span> Données hébergées en Europe (OVH)</li>
-      <li><span class="perk-dot"></span> On vous répond sous 24h ouvrées</li>
     </ul>
   </div>
 
   <div class="contact-form reveal">
     <div class="form-fields" id="formFields">
+
       <div class="form-row">
         <div class="form-group">
           <label for="prenom">Prénom</label>
@@ -1193,8 +1298,8 @@
 
       <div class="form-row full">
         <div class="form-group">
-          <label for="message">Ce que vous souhaitez automatiser</label>
-          <textarea id="message" name="message" placeholder="Décrivez le processus que vous voulez automatiser — outils utilisés, volume, fréquence…" required></textarea>
+          <label for="description">Décrivez votre tâche répétitive</label>
+          <textarea id="description" name="description" placeholder="Ex : chaque semaine je copie manuellement les nouveaux leads depuis notre formulaire dans un Excel, puis j'envoie un email de bienvenue à chacun. Ça me prend environ 2h…" required style="min-height:140px;"></textarea>
         </div>
       </div>
 
@@ -1204,16 +1309,16 @@
       </div>
 
       <button type="button" class="form-submit" id="submitBtn" onclick="handleSubmit()">
-        Envoyer ma demande →
+        Envoyer pour analyse gratuite →
       </button>
-      <p class="form-note">Aucun démarchage commercial · Réponse sous 24h · Données confidentielles</p>
-      <p class="form-note" style="margin-top:8px;font-size:.75rem;color:#b5aa99;">En soumettant ce formulaire, vous acceptez que vos données soient utilisées uniquement pour vous recontacter. Conformément au RGPD, vous pouvez demander leur suppression à <a href="mailto:hello@bundlyhub.com" style="color:var(--muted);text-decoration:underline;">hello@bundlyhub.com</a>.</p>
+      <p class="form-note">Réponse par écrit sous 24h · Aucun appel obligatoire · Aucun engagement</p>
+      <p class="form-note" style="margin-top:8px;font-size:.75rem;color:#b5aa99;">Conformément au RGPD, vos données sont utilisées uniquement pour vous répondre. Suppression possible à tout moment : <a href="mailto:hello@bundlyhub.com" style="color:var(--muted);text-decoration:underline;">hello@bundlyhub.com</a>.</p>
     </div>
 
     <div class="form-success" id="formSuccess">
       <div class="success-icon">✓</div>
-      <h3>Demande envoyée !</h3>
-      <p>On revient vers vous sous 24h pour caler un premier échange.</p>
+      <h3>Analyse en cours !</h3>
+      <p>On revient vers vous sous 24h avec une recommandation claire, par écrit.</p>
     </div>
   </div>
 </section>
@@ -1241,13 +1346,13 @@
     const hp = document.getElementById('website').value;
     if (hp) { showSuccess(); return; }
 
-    const prenom  = document.getElementById('prenom').value.trim();
-    const nom     = document.getElementById('nom').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const prenom = document.getElementById('prenom').value.trim();
+    const nom    = document.getElementById('nom').value.trim();
+    const email  = document.getElementById('email').value.trim();
+    const description = document.getElementById('description').value.trim();
 
-    if (!prenom || !nom || !email || !message) {
-      ['prenom','nom','email','message'].forEach(id => {
+    if (!prenom || !nom || !email || !description) {
+      ['prenom','nom','email','description'].forEach(id => {
         const el = document.getElementById(id);
         if (!el.value.trim()) {
           el.style.borderColor = '#c0392b';
@@ -1266,7 +1371,7 @@
     fetch('https://n8n.capozzi.fr/webhook/bd1b458c-146b-4a44-9c7a-8fee4bc57530', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prenom, nom, email, entreprise, message })
+      body: JSON.stringify({ prenom, nom, email, entreprise, description })
     })
     .then(res => {
       if (!res.ok) throw new Error('Erreur réseau');
@@ -1274,7 +1379,7 @@
     })
     .catch(() => {
       btn.disabled = false;
-      btn.textContent = 'Envoyer ma demande →';
+      btn.textContent = 'Envoyer pour analyse gratuite →';
       alert('Une erreur est survenue. Merci de réessayer ou de nous contacter directement à hello@bundlyhub.com');
     });
   }
