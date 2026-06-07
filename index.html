@@ -1114,7 +1114,50 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── RESPONSIVE ── */
+    /* ── ACCORDION PRICING ── */
+    .pricing-accordion-toggle {
+      width: 100%; background: none; border: 1.5px solid var(--border);
+      border-radius: 3px; padding: 12px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .85rem; font-weight: 600; color: var(--muted);
+      cursor: pointer; transition: all .2s; margin-top: 16px;
+      letter-spacing: .02em;
+    }
+    .pricing-accordion-toggle:hover { border-color: var(--orange); color: var(--orange); }
+    .pricing-accordion-toggle .toggle-icon {
+      font-size: .8rem; transition: transform .3s;
+    }
+    .pricing-accordion-toggle.open { border-color: var(--orange); color: var(--orange); }
+    .pricing-accordion-toggle.open .toggle-icon { transform: rotate(180deg); }
+
+    .pricing-accordion-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease;
+    }
+    .pricing-accordion-body.open { max-height: 600px; }
+
+    .reddit-accordion-toggle {
+      width: 100%; background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 3px; padding: 12px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .85rem; font-weight: 600;
+      color: rgba(247,243,236,.4);
+      cursor: pointer; transition: all .2s; margin-top: 16px;
+      letter-spacing: .02em;
+    }
+    .reddit-accordion-toggle:hover { border-color: var(--reddit); color: var(--reddit); }
+    .reddit-accordion-toggle.open { border-color: var(--reddit); color: var(--reddit); }
+    .reddit-accordion-toggle.open .toggle-icon { transform: rotate(180deg); }
+    .reddit-accordion-toggle .toggle-icon { font-size: .8rem; transition: transform .3s; }
+
+    .reddit-accordion-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease;
+    }
+    .reddit-accordion-body.open { max-height: 400px; }
     @media (max-width: 960px) {
       nav { padding: 18px 24px; }
       nav ul { display: none; }
@@ -1305,7 +1348,8 @@
         <li>Publication automatique disponible en option</li>
         <li>Onboarding en 5 min via formulaire</li>
       </ul>
-      <div class="offre-price">dès 89€ <em>/ mois</em></div>
+      <div class="offre-price">149€ <em>/ mois</em></div>
+      <div style="font-size:.78rem;color:var(--muted);margin-top:-8px;">dès 89€ · jusqu'à 229€ selon palier</div>
       <button class="offre-cta" onclick="document.getElementById('social').scrollIntoView({behavior:'smooth'})">Voir les détails →</button>
     </div>
 
@@ -1323,7 +1367,8 @@
         <li>Alerte Telegram instantanée + lien du post</li>
         <li>Visibilité GEO : indexé par ChatGPT, Claude & Perplexity</li>
       </ul>
-      <div class="offre-price" style="color:var(--orange2);">dès 299€ <em>/ mois</em></div>
+      <div class="offre-price" style="color:var(--orange2);">599€ <em>/ mois</em></div>
+      <div style="font-size:.78rem;color:rgba(247,243,236,.35);margin-top:-8px;">dès 299€ · jusqu'à 1 200€ selon palier</div>
       <button class="offre-cta" onclick="document.getElementById('reddit').scrollIntoView({behavior:'smooth'})">Voir les détails →</button>
     </div>
 
@@ -1355,6 +1400,11 @@
 
   <div class="offre-detail-grid">
     <div class="offre-detail-left reveal">
+      <button class="pricing-accordion-toggle" onclick="toggleAccordion(this, 'social-pricing')">
+        Voir les paliers de prix <span class="toggle-icon">▼</span>
+      </button>
+      <div class="pricing-accordion-body" id="social-pricing">
+        <div style="padding-top:12px;">
       <div class="pricing-table">
         <div class="pricing-table-head">
           <span>Offre</span>
@@ -1372,9 +1422,9 @@
             <span class="pill fb">FB</span>
           </div>
         </div>
-        <div class="pricing-row">
+        <div class="pricing-row" style="background:rgba(212,80,10,.04);border-left:3px solid var(--orange);">
           <div class="pricing-plan">
-            Pro
+            Pro <span style="display:inline-block;background:var(--orange);color:#fff;font-size:.65rem;padding:2px 6px;border-radius:2px;font-weight:700;letter-spacing:.06em;margin-left:6px;vertical-align:middle;">RECOMMANDÉ</span>
             <span>Posts quotidiens · email + Telegram</span>
           </div>
           <div class="pricing-price">149€ <em>/mois</em></div>
@@ -1398,6 +1448,8 @@
             <span class="pill x">X</span>
             <span class="pill gmb">GMB</span>
           </div>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -1452,6 +1504,11 @@
 
   <div class="reddit-detail-grid">
     <div class="reveal">
+      <button class="reddit-accordion-toggle" onclick="toggleAccordion(this, 'reddit-pricing')">
+        Voir les paliers de prix <span class="toggle-icon">▼</span>
+      </button>
+      <div class="reddit-accordion-body" id="reddit-pricing">
+        <div style="padding-top:12px;">
       <div class="reddit-pricing-table">
         <div class="reddit-pricing-head">
           <span>Offre</span>
@@ -1466,9 +1523,9 @@
           <div class="reddit-pricing-price">299€ <em>/mois</em></div>
           <div class="reddit-subreddits">3 subreddits</div>
         </div>
-        <div class="reddit-pricing-row">
+        <div class="reddit-pricing-row" style="background:rgba(255,69,0,.1);border-left:3px solid var(--reddit);">
           <div class="reddit-pricing-plan">
-            Growth
+            Growth <span style="display:inline-block;background:var(--reddit);color:#fff;font-size:.65rem;padding:2px 6px;border-radius:2px;font-weight:700;letter-spacing:.06em;margin-left:6px;vertical-align:middle;">RECOMMANDÉ</span>
             <span>Veille concurrentielle incluse</span>
           </div>
           <div class="reddit-pricing-price">599€ <em>/mois</em></div>
@@ -1481,6 +1538,8 @@
           </div>
           <div class="reddit-pricing-price">1 200€ <em>/mois</em></div>
           <div class="reddit-subreddits">15 subreddits</div>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -1573,29 +1632,43 @@
           <h3>Social IA + Reddit Veille + Automatisation</h3>
           <span>Un seul abonnement · Un seul interlocuteur</span>
         </div>
-        <ul class="bundle-tiers">
-          <li class="bundle-tier">
-            <div class="bundle-tier-name">
-              PME & Commerce
-              <span>1 réseau social + 3 subreddits + 1 automatisation</span>
+        <div style="padding:32px 40px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,243,236,.35);margin-bottom:8px;">À partir de</div>
+          <div style="font-family:'Fraunces',serif;font-weight:900;font-size:3rem;color:var(--orange2);letter-spacing:-.04em;line-height:1;">299€<span style="font-family:'Instrument Sans',sans-serif;font-size:1rem;font-weight:400;color:rgba(247,243,236,.3);"> /mois</span></div>
+          <div style="font-size:.82rem;color:rgba(247,243,236,.35);margin-top:6px;">jusqu'à 899€ selon périmètre · Enterprise sur devis</div>
+        </div>
+        <div style="padding:16px 40px;">
+          <button class="reddit-accordion-toggle" style="margin-top:0;" onclick="toggleAccordion(this, 'bundle-tiers')">
+            Voir le détail des paliers <span class="toggle-icon">▼</span>
+          </button>
+          <div class="reddit-accordion-body" id="bundle-tiers">
+            <div style="padding-top:12px;">
+              <ul class="bundle-tiers">
+                <li class="bundle-tier">
+                  <div class="bundle-tier-name">
+                    PME & Commerce
+                    <span>1 réseau social + 3 subreddits + 1 automatisation</span>
+                  </div>
+                  <div class="bundle-tier-price">299€ <em>/mois</em></div>
+                </li>
+                <li class="bundle-tier" style="background:rgba(255,69,0,.06);border-left:3px solid var(--orange2);">
+                  <div class="bundle-tier-name">
+                    SaaS & Agence <span style="display:inline-block;background:var(--orange2);color:#fff;font-size:.65rem;padding:2px 6px;border-radius:2px;font-weight:700;letter-spacing:.06em;margin-left:6px;vertical-align:middle;">RECOMMANDÉ</span>
+                    <span>2 réseaux + 8 subreddits + 2 automatisations + rapport</span>
+                  </div>
+                  <div class="bundle-tier-price">899€ <em>/mois</em></div>
+                </li>
+                <li class="bundle-tier">
+                  <div class="bundle-tier-name">
+                    Enterprise / Multi-sites
+                    <span>Full stack · suivi dédié · évolution continue</span>
+                  </div>
+                  <div class="bundle-tier-price">Sur devis</div>
+                </li>
+              </ul>
             </div>
-            <div class="bundle-tier-price">299€ <em>/mois</em></div>
-          </li>
-          <li class="bundle-tier">
-            <div class="bundle-tier-name">
-              SaaS & Agence
-              <span>2 réseaux + 8 subreddits + 2 automatisations + rapport</span>
-            </div>
-            <div class="bundle-tier-price">899€ <em>/mois</em></div>
-          </li>
-          <li class="bundle-tier">
-            <div class="bundle-tier-name">
-              Enterprise / Multi-sites
-              <span>Full stack · suivi dédié · évolution continue</span>
-            </div>
-            <div class="bundle-tier-price">Sur devis</div>
-          </li>
-        </ul>
+          </div>
+        </div>
         <div class="bundle-card-foot">
           <button class="bundle-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Obtenir un devis bundle →</button>
         </div>
@@ -1952,6 +2025,13 @@
 </footer>
 
 <script>
+  function toggleAccordion(btn, id) {
+    const body = document.getElementById(id);
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
